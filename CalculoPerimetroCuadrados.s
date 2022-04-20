@@ -29,26 +29,14 @@ main:
 	@ ingreso de datos
 	@ r0 contiene formato de ingreso
 	@ r1 contiene direccion donde almacena dato leido
-	ldr r0,=entrada
+	ldr r0,=formato
 	ldr r1,=a
-	bl scanf
-	
-    @ ingreso de datos
-	@ r0 contiene formato de ingreso
-	@ r1 contiene direccion donde almacena dato leido
-	ldr r0,=entrada
 	ldr r2,=b
-	bl scanf
-
-    @ ingreso de datos
-	@ r0 contiene formato de ingreso
-	@ r1 contiene direccion donde almacena dato leido
-	ldr r0,=entrada
 	ldr r3,=c
 	bl scanf
 
 	@ imprime lo que recibio
-	ldr r0,=entrada
+	ldr r0,=formato
 	ldr r1,=a
 	ldr r1,[r1]
     ldr r2,=b
@@ -56,6 +44,7 @@ main:
     ldr r3,=c
 	ldr r3,[r3]
 	bl printf
+
 
 	b fin
 

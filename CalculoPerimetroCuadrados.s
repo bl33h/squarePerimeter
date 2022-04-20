@@ -31,18 +31,22 @@ main:
 	@ r1 contiene direccion donde almacena dato leido
 	ldr r0,=formato
 	ldr r1,=a
-	ldr r2,=b
-	ldr r3,=c
+	ldr r2,=formato
+	ldr r3,=b
+	ldr r4,=formato
+	ldr r5,=c
 	bl scanf
 
 	@ imprime lo que recibio
 	ldr r0,=formato
 	ldr r1,=a
 	ldr r1,[r1]
-    ldr r2,=b
-	ldr r2,[r2]
-    ldr r3,=c
+	ldr r2,=formato
+    ldr r3,=b
 	ldr r3,[r3]
+	ldr r4,=formato
+    ldr r5,=c
+	ldr r5,[r5]
 	bl printf
 
 

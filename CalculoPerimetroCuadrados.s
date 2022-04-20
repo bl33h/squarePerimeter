@@ -22,43 +22,32 @@
 main:
 		@@ grabar registro de enlace en la pila
 	stmfd	sp!, {lr}
-
+	@ciclo de potencia
+    mov r10,#0 /*contador*/
+    cicloP:
 	ldr r0,=mensaje_ingreso
 	bl puts
-	
-	@ ingreso de datos
-	@ r0 contiene formato de ingreso
-	@ r1 contiene direccion donde almacena dato leido
-	ldr r0,=formato
-	ldr r1,=a
-	ldr r2,=formato
-	ldr r3,=b
-	ldr r4,=formato
-	ldr r5,=c
+	ldr r0, =entrada
+    ldr r1,=a
 	bl scanf
-
-	@ imprime lo que recibio
-	ldr r0,=formato
-	ldr r1,=a
-	ldr r1,[r1]
-	ldr r2,=formato
-    ldr r3,=b
-	ldr r3,[r3]
-	ldr r4,=formato
-    ldr r5,=c
-	ldr r5,[r5]
-	bl printf
-
-
+	 @carga valores
+    ldr r6, =a
+    ldr r8,[r6]
+    add r10,#1
+    mul r8,#4
+	mov r8,r8
+	str r8,[r6]
+    ldr r0,=Lmessage
+    ldr r1,=a
+    ldr r1,[r1]
+    bl printf
+    cmp r10,#3
+    bne cicloP
+    mov r8,r8
+    @guarda valor y regresa
 	b fin
 
-Num_Mal:
-	ldr r0,=mal
-	bl puts
-	bl getchar @para que borre la informacion del buffer de teclado
-
 fin:
-
 	@@ r0, r3 <- 0 como sennal de no error al sistema operativo
 	mov	r3, #0
 	mov	r0, r3
@@ -70,11 +59,6 @@ fin:
 .align 2
 
 a:	.word 0
-b:	.word 0
-c:	.word 0
-x: 	.word 0
-y:  .word 0
-z:  .word 0
 
 Lmessage:
 	.asciz "El perimetro del cuadrado es --> %d\n"
@@ -84,5 +68,3 @@ entrada:
 	.asciz " %d"
 mensaje_ingreso:
 	.asciz "Ingrese lado de cuadrado: "
-mal:
-	.asciz "Ingreso incorrecto\n"

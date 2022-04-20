@@ -6,11 +6,10 @@
 * Ciclo 1 - 2022
 *
 * CalculoPerimetroCuadrados.s
-* Caclulo de premietros por medio de 1 valor ingresado por el usuario
+* Caclulo de perimetros por medio de 1 valor ingresado por el usuario
 *  x = l * 4
 *  entrada de datos con scanf
-*  si hubo error en ingreso imprime mensaje
-*  sino prosigue hasta imprimir el resultado de los 3 datos
+*  imprime el resultado de los 3 datos
  ----------------------------------------------- */
 
 	@@ codigo de assembler: se coloca en la seccion .text
@@ -22,7 +21,7 @@
 main:
 		@@ grabar registro de enlace en la pila
 	stmfd	sp!, {lr}
-	@ciclo de potencia
+	@ciclo de perimetro
     mov r10,#0 /*contador*/
     cicloP:
 	ldr r0,=mensaje_ingreso
@@ -33,18 +32,22 @@ main:
 	 @carga valores
     ldr r6, =a
     ldr r8,[r6]
+	ldr r9, =b
+	ldr r11,[r9]
+	@suma a contador
     add r10,#1
-    mul r8,#4
+	@multiplicacion por 4
+    mul r8,r11
+	@guarda valor y regresa
 	mov r8,r8
 	str r8,[r6]
     ldr r0,=Lmessage
     ldr r1,=a
     ldr r1,[r1]
     bl printf
+	@compara si ya esta el input de 3 datos
     cmp r10,#3
     bne cicloP
-    mov r8,r8
-    @guarda valor y regresa
 	b fin
 
 fin:
@@ -59,12 +62,11 @@ fin:
 .align 2
 
 a:	.word 0
+b:	.word 4
 
 Lmessage:
 	.asciz "El perimetro del cuadrado es --> %d\n"
-formato:
-	.asciz " %d\n"
 entrada:
 	.asciz " %d"
 mensaje_ingreso:
-	.asciz "Ingrese lado de cuadrado: "
+	.asciz "Ingrese el valor del lado del cuadrado del cual desea calcular el perimetro: "

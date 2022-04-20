@@ -57,41 +57,6 @@ main:
 	ldr r3,[r3]
 	bl printf
 
-	@@ calculos
-	ldr r4,=a
-	ldr r0,[r4]		/* direccion y valor de a en R0*/
-	mul r3,r0,#4	/* r3 <- a * 4 */
-
-	ldr r4,=b
-	ldr r1,[r4]		/* direccion y valor de b en R1*/
-	mul r4,r1,#4	/* r4 <- b * 4 */
-
-	ldr r4,=c
-	ldr r2,[r4]		/* direccion y valor de c en R2 */
-	mul r5,r2,#4	/* r5 <- c * 4 */
-
-	ldr r4,=x
-	str r3,[r4]		/* guarda resultado en x */
-
-	ldr r4,=y
-	str r5,[r4]		/* guarda resultado en y */
-
-	ldr r4,=z
-	str r6,[r4]		/* guarda resultado en z */
-
-	@@ carga resultado y lo muestra
-	ldr r0,=Lmessage
-	bl printf
-	ldr r4,=x
-	ldr r1,[r4]		/* direccion y valor de x */
-	ldr r0,=formato
-	ldr r4,=y
-	ldr r2,[r4]		/* direccion y valor de y */
-	ldr r0,=formato
-	ldr r4,=z
-	ldr r3,[r4]		/* direccion y valor de z */
-	ldr r0,=formato
-	bl printf
 	b fin
 
 Num_Mal:

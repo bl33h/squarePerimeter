@@ -3,7 +3,7 @@ A program that calculates the perimeter of a square based on user input. It uses
 
 <p align="center">
   <br>
-  <img src="https://concept-stories.s3.ap-south-1.amazonaws.com/test/Stories%20-%20Images_story_104908/image_2020-02-20%2005%3A55%3A36.028812%2B00%3A00" alt="pic" width="500">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Missing_square_edit.gif" alt="pic" width="500">
   <br>
 </p>
 <p align="center" >
